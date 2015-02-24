@@ -1,0 +1,24 @@
+****** uniform initial state *********
+wave = -245.4413
+circle = -221.3903
+inf11 =  -207.1910
+beat4_01 = -501.7170
+eight01 =  -427.3833
+beat3_01 = -169.3637
+beat3_06 = -295.3856
+beat3_02 = -207.6756
+inf13 = -224.9015
+circle_train2 = -186.3292
+circle cv = ~-800
+**********  1,0,0 initial state ******
+inf11 = -261.1289
+beat3_01  = -211.1425
+beat3_02 = -261.2029
+circle_train2 = -132.2900
+circle_cv =  -152.9716 / -186.5563
+ 
+
+convergence 
+K 
+pirior
+numbe of states
