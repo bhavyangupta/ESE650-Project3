@@ -11,6 +11,7 @@ global B
 global pie
 global NUM_STATES
 global c
+d = zeros(length(observations),1);
 T = size(observations,1);
 % beta = zeros(T,NUM_STATES);
 % beta(T,:) = ones(1,NUM_STATES);
@@ -25,19 +26,24 @@ T = size(observations,1);
 
 beta_bar = zeros(T,NUM_STATES);
 beta_hat = zeros(T,NUM_STATES);
-
+beta_bar(T,:) = ones(1,NUM_STATES);
 beta_hat(T,:) = ones(1,NUM_STATES);
-beta_bar(T,:) = c(T) * beta_hat(T,:);
-beta_bar(T,:) = beta_bar(T,:)/sum(beta_bar(T,:));
-% beta_bar(T,:) = beta_hat(T,:);
+d(T,:) = 1/sum(beta_bar(T,:));
+beta_hat(T,:) = d(T,:) * beta_bar(T,:);
+
+% beta_bar(T,:) = c(T) * beta_hat(T,:);
+% beta_bar(T,:) = beta_bar(T,:)/sum(beta_bar(T,:));
+% % beta_bar(T,:) = beta_hat(T,:);
 for t = (T-1):-1:1
 %     disp(t)
     x = bsxfun(@times,A,B(observations(t+1,:)));
     y= bsxfun(@times, x, beta_hat(t+1,:)');
     beta_bar(t,:) = sum(y,1);
 %      beta_bar(t,:) = beta_bar(t,:)/sum(beta_bar(t,:));
-    beta_hat(t,:) = c(t) * beta_bar(t,:);
+%     beta_hat(t,:) = c(t) * beta_bar(t,:);
+    d(t,:) = 1/sum(beta_bar(t,:));
+    beta_hat(t,:) = d(t,:) * beta_bar(t,:);
 end
-beta = beta_bar;
+beta = beta_hat;
 
 end

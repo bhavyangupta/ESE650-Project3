@@ -23,9 +23,9 @@ global Xi_accum
 NUM_MEASUREMENTS = 6;
 NUM_STATES = 3;
 NUM_CENTROIDS = size(codebook,1);
- pie = rand(1,NUM_STATES);
-% pie = zeros(1,NUM_STATES);
-% pie(1) = 1;
+%  pie = rand(1,NUM_STATES);
+pie = zeros(1,NUM_STATES);
+pie(1) = 1;
 pie = pie/sum(pie);
 A = [0.9, 0.5, 0;...
      0, 0.5, 0.5; ...

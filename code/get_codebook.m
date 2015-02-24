@@ -1,14 +1,14 @@
 %%
 % get_codebook.m
+% Bhavya 
+% Fetches circle data and generates codebook and discretised data
 %
-% Fetches circle data
 %% Config visualisaiton:
 PLOT_DISCRETE = true;
 PLOT_CONT = true;
 PLOT_FILT = false;
 
 %% Read file
-
 source_name = ['../Data/train/circle/circle_train.txt'];
 target_name_codebook = ['../Data/train/circle/circle_codebook.mat'];
 target_name_data = ['../Data/train/circle/circle_train_discrete.mat'];

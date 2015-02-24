@@ -38,7 +38,7 @@ end
 iter = 1;
 while iter<30
     iter
-    [likelihood,alpha] = forward_prop (observations(:));
+    [likelihood,alpha] = forward_prop (observations(:),true);
     beta = backward_prop (observations(:));
     
     for t = 1:T-1
