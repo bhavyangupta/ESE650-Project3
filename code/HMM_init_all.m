@@ -27,12 +27,24 @@ NUM_CENTROIDS = size(codebook,1);
 pie = zeros(1,NUM_STATES);
 pie(1) = 1;
 pie = pie/sum(pie);
-A = [0.9, 0.5, 0;...
-     0, 0.5, 0.5; ...
-     0.1, 0, 0.5];
-B = rand(NUM_CENTROIDS,NUM_STATES); % elements refer to the probabilities
+A = [0.05, 0.02, 0;...
+     0, 0.05, 0.05; ...
+     0.1,0, 0.05];
+% 
+% Normalise A
+%  A = bsxfun(@rdivide,A,sum(A,2)) % Normalise rows
+% A(:,2:end) = 1- A(:,2:end) 
+
+% B = rand(NUM_CENTROIDS,NUM_STATES); % elements refer to the probabilities
 %  Normalise B:
-B = bsxfun(@rdivide,B,sum(B,1))
+B =  [0.8, 0.1,0.1;...
+      0.1,0.8,0.1;...
+      0.1,0.1,0.8];
+  
+    
+         
+B = bsxfun(@rdivide,B,sum(B,1));
+
 Xi = zeros(NUM_STATES,NUM_STATES);
 Xi_accum = zeros(NUM_STATES,NUM_STATES);
 c = [];

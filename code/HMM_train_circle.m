@@ -56,8 +56,10 @@ while iter<30
     end
     
     pie = gamma_first /sum(gamma_first);
-    A = bsxfun(@rdivide,Xi_accum,gamma_accum)
+    A = bsxfun(@rdivide,Xi_accum,gamma_accum);
     gamma_accum = gamma_accum + (alpha(T,:).*beta(T,:))/sum(alpha(T,:).*beta(T,:)) ;
-    B = bsxfun(@rdivide, B_bar,gamma_accum)
+     B = bsxfun(@rdivide, B_bar,gamma_accum);
+    B = bsxfun(@rdivide,B,sum(B,1))
+    A = bsxfun(@rdivide,A, sum(A,2))
     iter = iter+ 1;
 end
